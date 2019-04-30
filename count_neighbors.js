@@ -6,10 +6,10 @@ function count_neighbors(grid, x, y){						// count all 8 neighbors around a squ
     	for (let j = -1; j < 2; j++) {						              // search y coordinates -1, 0 and +1
       		let col = (x + i + gridWidth) % gridWidth;		      // modulous allows wrapping to handle boundary conditions
       		let row = (y + j + gridHeight) % gridHeight;
-      		sum += grid[col][row];
+      		sum += grid[col][row].state;
     	}
   	}
-	sum -= grid[x][y];										// removes center cell from count
+	sum -= grid[x][y].state;										// removes center cell from count
 	return sum;
 }
 
@@ -22,7 +22,7 @@ function count_green(grid, x, y){             // count all 8 neighbors around a 
           let col = (x + i + gridWidth) % gridWidth;          // modulous allows wrapping to handle boundary conditions
           let row = (y + j + gridHeight) % gridHeight;
           
-          if (grid[col][row].state == 1){
+          if (grid[col][row].color == "green"){
 
             green_count += 1;
 
@@ -41,7 +41,7 @@ function count_red(grid, x, y){             // count all 8 neighbors around a sq
           let col = (x + i + gridWidth) % gridWidth;          // modulous allows wrapping to handle boundary conditions
           let row = (y + j + gridHeight) % gridHeight;
           
-          if (grid[col][row].state == 2){
+          if (grid[col][row].color == "red"){
 
             red_count += 1;
 
@@ -50,3 +50,4 @@ function count_red(grid, x, y){             // count all 8 neighbors around a sq
   }
   return red_count;
 }
+
