@@ -30,3 +30,12 @@ function get_random_binary(){
 	return random_binary;
 
 }
+
+function get_random_color(){
+
+	let random_color = ['red', 'yellow', 'orange'];
+
+	let index = Math.floor(Math.random() * (random_color.length)); // generates int from 0 to random_color.length (4, exlusive)
+
+	return random_color[index];
+}

@@ -24,7 +24,7 @@ function initialize(){
 
 	  	for (var j = 0; j < gridHeight; j++) {
 
-	  		next[i][j] = new Cell(0, "white", i, j);
+	  		next[i][j] = new Cell(0, null, i, j);
 	  	}
 	}
 
@@ -34,16 +34,10 @@ function initialize(){
 
   		for (var j = 0; j < gridHeight; j++) {
 
-  			cells[i][j] = new Cell(get_random_binary(), "white", i, j);			// create array of cell objects
+  			cells[i][j] = new Cell(get_random_binary(), get_random_color(), i, j);
+
   		}
   	}
-
-	cells[50][50].state = 1;									// seed colored cells			
-	cells[50][50].color = "green";	
-
-	cells[270][130].state = 1;									
-	cells[270][130].color = "red";		
-
 }
 
 // graphics initialization
@@ -66,9 +60,14 @@ const redraw = () => {
 	for (i = 0; i < gridWidth; i++) {
 		for (j = 0; j < gridHeight; j++) {
 
-			if (cells[i][j].state == 1) {
+			let state = cells[i][j].state;
 
-				cells[i][j].draw();
+			if (state == 1) {
+				
+				let max_color = get_max_color(cells, i, j);
+
+    			cells[i][j].draw();
+    			cells[i][j].color = max_color;
 
 			} 
 		}
@@ -77,22 +76,21 @@ const redraw = () => {
 	for (let i = 0; i < gridWidth; i++) {
     	for (let j = 0; j < gridHeight; j++) {
       		
-      		let state = cells[i][j].state;
-      		let sum = 0;
+      		let cell_state = cells[i][j].state;
       		let neighbors = count_neighbors(cells, i, j);
-
-			if (state == 0 && neighbors == 3) {
+      		      		
+			if (cell_state == 0 && neighbors == 3) {
 			
 				next[i][j].state = 1;
-
-			} else if (state == 1 && (neighbors < 2 || neighbors > 3)) {
+								
+			} else if (cell_state == 1 && (neighbors < 2 || neighbors > 3)) {
         		
         		next[i][j].state = 0;
-        		
+        		        		
         	} else {
 				
-				next[i][j].state = state;
-				
+				next[i][j].state = cell_state;
+										
 			}
 		}
 	}
@@ -101,38 +99,7 @@ const redraw = () => {
     	for (let j = 0; j < gridHeight; j++) {
 
     		cells[i][j].state = next[i][j].state;
-    	}
-    }
-
-	for (let i = 0; i < gridWidth; i++) {
-    	for (let j = 0; j < gridHeight; j++) {
-      		
-    		let num_green = count_green(cells, i, j);
-    		let num_red = count_red(cells, i, j);
-    		let state = cells[i][j].state;
-
-    		if (state == 1 && cells[i][j].color == "white" && (num_green > 0 || num_red > 0) && num_green > num_red){
-
-    			cells[i][j].color = "green";
-			
-			} else if (state == 1 && cells[i][j].color == "white" && (num_green > 0 || num_red > 0) && num_red > num_green) {
-
-				cells[i][j].color = "red";
-			
-			} else if (state == 1 && cells[i][j].color == "white" && (num_green > 0 || num_red > 0) && num_red == num_green) {
-
-				let color = Math.floor(Math.random() * 2) + 1;  // random number 1 or 2
-
-				if (color == 1) { 
-
-					cells[i][j].color = "green"; 
-
-				} else if (color == 2) { 
-
-					cells[i][j].color = "red"; 
-
-				}
-			} 
+    		    		
     	}
     }
 }
