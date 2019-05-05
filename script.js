@@ -2,7 +2,7 @@
 var width = 1600;
 var height = 900;
 var zoom = 0;
-var fps = 30;
+var fps = 60;
 
 var cellSize = 5;
 var gridHeight = height / cellSize;
@@ -16,10 +16,14 @@ var imageData;
 next = Array();
 cells = Array();
 
-zero_rule = random_ruleset();
-console.log('zero rule = ' + zero_rule);
-one_rule =	random_ruleset();
-console.log('one rule = ' + one_rule);
+//			[0,1,2,3,4,5,6,7,8]		
+zero_rule = [0,0,0,1,0,0,0,0,0];
+console.log('zero_rule: '+ zero_rule);
+
+//			[0,1,2,3,4,5,6,7,8]		
+one_rule = 	[0,0,1,1,0,0,0,0,0];
+console.log('one_rule: '+ one_rule);
+
 
 function initialize(){
 
@@ -84,18 +88,14 @@ const redraw = () => {
       		let cell_state = cells[i][j].state;
       		let neighbors = count_neighbors(cells, i, j);
       		      		
-			if (cell_state == 0 && neighbors == 3) {
-			
-				assign_rule(next, one_rule, i, j);
-								
-			} else if (cell_state == 1 && (neighbors < 2 || neighbors > 3)) {
-        		
-        		assign_rule(next, zero_rule, i, j);
-        		        		
-        	} else {
-				
-				next[i][j].state = cell_state;
-										
+			if (cell_state == 1){
+
+				next[i][j].state = one_rule[neighbors];
+
+			} else if (cell_state == 0){
+
+				next[i][j].state = zero_rule[neighbors];
+
 			}
 		}
 	}
