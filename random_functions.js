@@ -31,13 +31,28 @@ function get_random_binary(){
 
 }
 
-function get_random_color(){
+function get_random_h(){
 
-	let random_color = ['red', 'orange', 'yellow'];
+	let rand_h = Math.random() * 361;
 
-	let index = Math.floor(Math.random() * (random_color.length)); // generates int from 0 to random_color.length (4, exlusive)
+	return rand_h;
 
-	return random_color[index];
+}
+
+function get_random_s(){
+
+	let rand_s = Math.random() * 101;
+
+	return rand_s;
+
+}
+
+function get_random_l(){
+
+	let rand_l = Math.random() * 101;
+
+	return rand_l;
+
 }
 
 function random_ruleset(){
@@ -51,5 +66,4 @@ function random_ruleset(){
 	}
 
 	return ruleset;
-
 }

@@ -4,7 +4,7 @@ var height = 900;
 var zoom = 0;
 var fps = 60;
 
-var cellSize = 5;
+var cellSize = 10;
 var gridHeight = height / cellSize;
 var gridWidth = width / cellSize;
 	
@@ -43,7 +43,7 @@ function initialize(){
 
   		for (var j = 0; j < gridHeight; j++) {
 
-  			cells[i][j] = new Cell(get_random_binary(), get_random_color(), i, j);
+  			cells[i][j] = new Cell(get_random_binary(), get_random_h(), get_random_s(), get_random_l(), i, j);
 
   		}
   	}
@@ -73,10 +73,23 @@ const redraw = () => {
 
 			if (state == 1) {
 				
-				let max_color = get_max_color(cells, i, j);
+				let h = get_average_h(cells, i, j);
+				let s = get_average_s(cells, i, j);
+				let l = get_average_l(cells, i, j);
 
-    			cells[i][j].draw();
-    			cells[i][j].color = max_color;
+				// let h = get_max_h(cells, i, j);
+				// let s = get_max_s(cells, i, j);
+				// let l = get_max_l(cells, i, j);
+
+				// let h = get_random_h();
+				// let s = get_random_s();
+				// let l = get_random_l();
+
+	   			cells[i][j].draw();
+
+    			cells[i][j].h = h;
+    			cells[i][j].s = s;
+    			cells[i][j].l = l;
 
 			} 
 		}
