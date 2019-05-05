@@ -42,3 +42,26 @@ function get_max_color(grid, x, y){
   return max_color;
 
 }
+
+function assign_rule(grid, ruleset, x, y){                       
+
+let count = 0;
+
+ for (let i = -1; i < 2; i++) {                           
+    for (let j = -1; j < 2; j++) {                          
+      let col = (x + i + gridWidth) % gridWidth;         
+      let row = (y + j + gridHeight) % gridHeight;
+        
+      if (i != 0 && j != 0){
+
+        grid[col][row].state = grid[col][row].state;
+
+      } else {
+
+        grid[col][row].state = ruleset[count];
+        count += 1;
+
+      }
+    }
+  }
+}

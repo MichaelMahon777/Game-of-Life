@@ -16,6 +16,11 @@ var imageData;
 next = Array();
 cells = Array();
 
+zero_rule = random_ruleset();
+console.log('zero rule = ' + zero_rule);
+one_rule =	random_ruleset();
+console.log('one rule = ' + one_rule);
+
 function initialize(){
 
 	for (var i = 0; i < gridWidth; i++) {	
@@ -81,11 +86,11 @@ const redraw = () => {
       		      		
 			if (cell_state == 0 && neighbors == 3) {
 			
-				next[i][j].state = 1;
+				assign_rule(next, one_rule, i, j);
 								
 			} else if (cell_state == 1 && (neighbors < 2 || neighbors > 3)) {
         		
-        		next[i][j].state = 0;
+        		assign_rule(next, zero_rule, i, j);
         		        		
         	} else {
 				

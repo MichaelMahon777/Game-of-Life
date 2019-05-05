@@ -33,9 +33,23 @@ function get_random_binary(){
 
 function get_random_color(){
 
-	let random_color = ['red', 'yellow', 'orange'];
+	let random_color = ['red', 'orange', 'yellow'];
 
 	let index = Math.floor(Math.random() * (random_color.length)); // generates int from 0 to random_color.length (4, exlusive)
 
 	return random_color[index];
+}
+
+function random_ruleset(){
+
+	let ruleset = new Array();
+
+	for (let i = 0; i < 9; i++){
+
+		ruleset.push(get_random_binary());
+
+	}
+
+	return ruleset;
+
 }

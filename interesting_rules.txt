@@ -1,0 +1,30 @@
+looks like fire, with organge, red and yellow!
+
+zero_rule = [0, 1, 0, 1, 1, 0, 0, 0];
+one_rule =	[0, 1, 0, 0, 0, 0, 1, 0];
+
+interesting to watch the colors stretch over time, like dye in a stream.
+
+zero_rule = [1, 0, 0, 0, 0, 1, 0, 1];
+one_rule =	[0, 1, 0, 1, 1, 0, 0, 0];
+
+reminds me of original game of life, with a cool color migration.
+
+zero rule = [0, 0, 0, 1, 0, 1, 1, 0, 0];
+one rule = 	[1, 1, 0, 1, 0, 1, 0, 1, 1];
+
+camoflage maker!
+
+zero rule = [1, 1, 1, 1, 0, 0, 0, 0, 0];
+one rule =  [0, 1, 1, 1, 1, 1, 0, 0, 1];
+
+Don't know whats going on with the color over time, but it was facinating to watch unfold.
+Looks like it eventually goes monochrome.
+
+zero rule = [1, 1, 0, 0, 1, 1, 0, 0, 0];
+one rule =  [1, 1, 1, 1, 0, 1, 1, 0, 1];
+
+reminds me of watching aerial view of the sea:
+
+zero rule = [0, 1, 1, 0, 1, 1, 1, 1, 1];
+one rule =  1, 0, 0, 0, 1, 1, 0, 0, 0];
